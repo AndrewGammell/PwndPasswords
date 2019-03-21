@@ -1,0 +1,35 @@
+package menu;
+
+import java.util.Scanner;
+
+public class MainMenu {
+	
+	private boolean exit = false;
+	private String chose;
+	
+	public void showMenu() {
+		System.out.println("Welcome To Pwnd Passwords Main Menu");
+		do {
+			System.out.println("Please make your selection now\n1) List all pwnd sites");
+			try(Scanner scan = new Scanner(System.in)){
+				chose = scan.next();
+
+				makeChoice(chose);
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+			
+		}while(exit);
+		
+	}
+	
+	private void makeChoice(String chose) {
+		
+		switch(chose) {
+		case "1": System.out.println("printing list of pwnd site");
+		break;
+		default: System.out.println("Sorry you made an invalid selection");
+		}
+	}
+}

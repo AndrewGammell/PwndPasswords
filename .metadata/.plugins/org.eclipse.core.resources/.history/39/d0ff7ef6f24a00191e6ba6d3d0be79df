@@ -1,0 +1,6 @@
+package menu;
+
+public class MainMenu {
+	
+	System.out.println("Welcome To Pwnd Passwords Main Menu");
+}

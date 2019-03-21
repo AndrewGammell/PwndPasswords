@@ -1,0 +1,23 @@
+package services;
+
+import java.io.IOException;
+import java.net.URL;
+
+import javax.net.ssl.HttpsURLConnection;
+
+public class PasswordChecker {
+
+	//https://haveibeenpwned.com/api/v2/breaches
+	public void listHackedSites() {
+		try {
+			URL url = new URL("https://haveibeenpwned.com/api/v2/breaches");
+			HttpsURLConnection con = (HttpsURLConnection) url.openConnection();
+			con.setRequestMethod("GET");
+			System.out.println(con.getResponseMessage());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+}
