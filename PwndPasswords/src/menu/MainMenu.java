@@ -2,14 +2,14 @@ package menu;
 
 import java.util.Scanner;
 
-import services.PasswordChecker;
+import services.PwnageServices;
 
 public class MainMenu {
 
 	private boolean exit = false;
 	private String chose;
-	private Scanner scan = new Scanner(System.in);
-	private PasswordChecker checker = new PasswordChecker();
+	private Scanner scanner = new Scanner(System.in);
+	private PwnageServices service = new PwnageServices();
 
 	public void runMenu() {
 		System.out.println("Welcome To Pwnd Passwords Main Menu");
@@ -17,7 +17,7 @@ public class MainMenu {
 
 			showOptions();
 
-			chose = scan.next();
+			chose = scanner.next();
 
 			doOperation(chose);			
 
@@ -30,6 +30,8 @@ public class MainMenu {
 		System.out.println("Please make your selection now"
 				+ "\n1) List all pwnd sites"
 				+ "\n2) Check password for Pwnage"
+				+ "\n3) Check account for pwnage"
+				+ "\nh) Show Help"
 				+ "\ne) Exit Application"
 				+ "\n"
 				);
@@ -38,12 +40,21 @@ public class MainMenu {
 	private void doOperation(String chose) {
 
 		switch(chose.toLowerCase()) {
-		case "1": System.out.println("printing list of pwnd site\n"); checker.listHackedSites();
+		case "1": System.out.println("printing list of pwnd site\n"); service.breachService();
 		break;
-		case "2": System.out.println("checking password"); checker.checkPassword();
+		case "2": service.passwordService();
+		break;
+		case "3": service.accountService();
+		break;
 		case "e": System.out.println("Good Bye"); exit = true;
+		break;
+		case "h": showHelp();
 		break;
 		default: System.out.println("Sorry you made an invalid selection\n");
 		}
+	}
+	
+	private void showHelp() {
+		System.out.println("help section is under construction");
 	}
 }
